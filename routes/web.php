@@ -13,16 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('welcome');
-})->name("welcome");
 
-Route::get('/post/{id}', 'App\Http\Controllers\PostController@get')->name("post");
 
-Route::get('/', function () {
-    return view('welcome');
-})->name("welcome");
+
+Route::get('/','App\Http\Controllers\ProductController@index')->name("welcome");
+
+
+
+
+
+
 Route::post('/login', 'App\Http\Controllers\AuthController@login')->name("login");
+
+Route::get('/product/{id}', 'App\Http\Controllers\ProductController@show')->name("product");
+
 
 Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name("logout");
 
@@ -40,15 +44,6 @@ Route::get('/dashboard', function () {
 
 Route::post('/register','App\Http\Controllers\AuthController@register')->name("register");
 
-Route::get('/posts',"App\Http\Controllers\Postcontroller@index");
-
-Route::post('/posts',"App\Http\Controllers\Postcontroller@create")->name("posts");
-
-Route::post('/posts/{post}/like',"App\Http\Controllers\Likecontroller@like")->name("posts.like");
-
-Route::post('/posts/{post}/dislike',"App\Http\Controllers\Likecontroller@dislike")->name("posts.dislike");
-
-Route::post('/posts/{post}/delete',"App\Http\Controllers\Postcontroller@destroy")->name("posts.delete");
 
 
 
